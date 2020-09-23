@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-title style="text-align: center"><strong>Compte</strong></ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <form id="1">
+        <ion-card-title style="text-align: center;"><strong><img id="2" [src]="image"></strong>
+          <ion-button size="small" color="success" (click)="cext()" type="submit">
+            <ion-icon name="create-outline"></ion-icon>uploader
+          </ion-button>
+          <ion-button size="small" color="primary" (click)="openCam('camera')">
+            <ion-icon name="camera-outline"></ion-icon>Camera
+          </ion-button>
+
+        </ion-card-title>
+      </form>
+
+    </ion-card-header>
+    <ion-card-content>
+      <form>
+        <!-- <ion-list> -->
+        <div style="text-align: center;">
+          <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+          </ion-refresher>
+          <ion-icon name="person"></ion-icon><strong> Nom : </strong>
+          <ion-label position="stacked"><strong>{{username}}</strong> </ion-label><br>
+          <ion-icon name="person"></ion-icon><strong> Prenom : </strong>
+          <ion-label position="stacked"><strong>{{prenom}}</strong> </ion-label><br>
+
+          <ion-icon name="mail"></ion-icon><strong> Email :</strong>
+          <ion-label position="stacked"><strong>{{email}}</strong> </ion-label><br>
+
+          <ion-icon name="key"></ion-icon><strong> Password : </strong>
+          <ion-label position="stacked"><strong> {{password}}</strong></ion-label><br>
+
+          <ion-icon name="location-outline"></ion-icon><strong> Adresse : </strong>
+          <ion-label position="stacked"><strong>{{adresse}}</strong> </ion-label><br>
+
+          <ion-icon name="call-outline"></ion-icon><strong> Telephone :</strong>
+          <ion-label position="stacked"><strong>{{telephone}}</strong> </ion-label><br>
+          <ion-button size="small" color="primary" (click)="ModifierUser()">
+            <ion-icon name="create-outline"></ion-icon>Modifier
+          </ion-button>
+        </div>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-button routerLink="/login" color="warning" expand="block" (click)="logout()">
+    <ion-icon name="log-out-outline"></ion-icon>
+    Deconnexion
+  </ion-button>
+</ion-content>

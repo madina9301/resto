@@ -1,0 +1,53 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-title style="text-align: center"><strong>Compte</strong></ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/menu"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align: center;"><strong>Modifier Compte</strong> </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (submit)="modifier()" [formGroup]="formGroup" *ngIf="user" method="POST">
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">Username</ion-label>
+            <ion-input formControlName="username" type="text"></ion-input>
+          </ion-item>
+          <ion-label color="danger" *ngIf="formGroup.controls.username.hasError('minlength')" style=" font-size: 0.7em;margin-bottom: -5px;margin-left: 50px;">Doit contenir au moins 2 caractères</ion-label><br>
+          <ion-item>
+            <ion-label position="stacked">Prenom</ion-label>
+            <ion-textarea formControlName="prenom"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input formControlName="email" type="email" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">telephone</ion-label>
+            <ion-input formControlName="telephone" type="number" required></ion-input>
+            <ion-label color="danger" *ngIf="formGroup.controls.telephone.hasError('required')">Champ obligatoire</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Adresse</ion-label>
+            <ion-textarea formControlName="adresse"></ion-textarea>
+          </ion-item>
+
+        </ion-list>
+        <ion-button type="reset" size="small" color="danger" style="margin-left: 25px;">
+          <ion-icon name="close"></ion-icon>Vider
+        </ion-button>
+
+        <ion-button type="submit" size="small" [disabled]="formGroup.invalid">
+          <ion-icon slot="start" name="checkmark"></ion-icon>Valider
+        </ion-button>
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
